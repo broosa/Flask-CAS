@@ -66,7 +66,7 @@ class CAS(object):
 
     def teardown(self, exception):
         ctx = stack.top
-    
+
     @property
     def app(self):
         return self._app or current_app
@@ -87,10 +87,10 @@ class CAS(object):
             self.app.config['CAS_TOKEN_SESSION_KEY'], None)
 
 def login():
-    return flask.redirect(flask.url_for('cas.login', _external=True))
+    return flask.redirect(flask.url_for('cas.login', _external=True, _scheme='https'))
 
 def logout():
-    return flask.redirect(flask.url_for('cas.logout', _external=True))
+    return flask.redirect(flask.url_for('cas.logout', _external=True, _scheme='https'))
 
 def login_required(function):
     @wraps(function)
